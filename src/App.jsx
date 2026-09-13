@@ -7,6 +7,8 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
+import Profile from './components/Profile/Profile';
+import ProfileForm from './components/Profile/ProfileForm';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -18,6 +20,7 @@ const App = () => {
       <NavBar />
 
       <Routes>
+        {/* Home */}
         <Route
           path="/"
           element={
@@ -31,6 +34,7 @@ const App = () => {
           }
         />
 
+        {/* Authentication */}
         <Route
           path="/sign-up"
           element={<SignUpForm />}
@@ -39,6 +43,17 @@ const App = () => {
         <Route
           path="/sign-in"
           element={<SignInForm />}
+        />
+
+        {/* Profile */}
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <SignInForm />}
+        />
+
+        <Route
+          path="/profile/edit"
+          element={user ? <ProfileForm /> : <SignInForm />}
         />
       </Routes>
     </>
