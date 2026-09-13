@@ -15,6 +15,7 @@ const ProfileForm = () => {
 
   const [profileImage, setProfileImage] = useState(null);
   const [message, setMessage] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -34,6 +35,8 @@ const ProfileForm = () => {
   }, []);
 
   const handleChange = (evt) => {
+    setMessage('');
+
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
@@ -48,6 +51,9 @@ const ProfileForm = () => {
     evt.preventDefault();
 
     try {
+      setIsSaving(true);
+      setMessage('');
+
       const data = new FormData();
 
       data.append('name', formData.name);
@@ -62,6 +68,7 @@ const ProfileForm = () => {
       navigate('/profile');
     } catch (err) {
       setMessage(err.message);
+      setIsSaving(false);
     }
   };
 
@@ -110,13 +117,17 @@ const ProfileForm = () => {
           />
         </div>
 
-        <button type="submit">
-          Save Changes
+        <button
+          type="submit"
+          disabled={isSaving}
+        >
+          {isSaving ? 'Saving...' : 'Save Changes'}
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/profile')}
+          disabled={isSaving}
         >
           Cancel
         </button>

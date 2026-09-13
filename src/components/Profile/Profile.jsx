@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import {
   getProfile,
   deleteProfile,
@@ -13,6 +12,9 @@ const Profile = () => {
 
   const [user, setProfile] = useState(null);
   const [message, setMessage] = useState('');
+  const [showDeleteConfirmation, setShowDeleteConfirmation] =
+    useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -28,15 +30,10 @@ const Profile = () => {
   }, []);
 
   const handleDeleteAccount = async () => {
-    const confirmed = window.confirm(
-      'Are you sure you want to delete your account? This cannot be undone.'
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
     try {
+      setIsDeleting(true);
+      setMessage('');
+
       await deleteProfile();
 
       localStorage.removeItem('token');
@@ -44,11 +41,16 @@ const Profile = () => {
       navigate('/');
     } catch (err) {
       setMessage(err.message);
+      setIsDeleting(false);
     }
   };
 
   if (!user) {
-    return <main>{message || 'Loading profile...'}</main>;
+    return (
+      <main>
+        {message || 'Loading profile...'}
+      </main>
+    );
   }
 
   return (
@@ -77,12 +79,51 @@ const Profile = () => {
         Edit Profile
       </Link>
 
-      <button
-        type="button"
-        onClick={handleDeleteAccount}
-      >
-        Delete Account
-      </button>
+      <hr />
+
+      <section>
+        <h2>Danger Zone</h2>
+
+        <p>
+          Permanently delete your Swaply account and all
+          associated data.
+        </p>
+
+        {!showDeleteConfirmation ? (
+          <button
+            type="button"
+            onClick={() => setShowDeleteConfirmation(true)}
+          >
+            Delete Account
+          </button>
+        ) : (
+          <div>
+            <h3>Are you sure you want to delete your account?</h3>
+
+            <p>
+              This action cannot be undone.
+            </p>
+
+            <button
+              type="button"
+              onClick={handleDeleteAccount}
+              disabled={isDeleting}
+            >
+              {isDeleting
+                ? 'Deleting...'
+                : 'Delete My Account'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setShowDeleteConfirmation(false)}
+              disabled={isDeleting}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
+      </section>
     </main>
   );
 };
