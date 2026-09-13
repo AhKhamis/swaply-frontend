@@ -6,7 +6,7 @@ const NavBar = () => {
 
   const { user, setUser } = useContext(UserContext)
 
-  const handleSignOut = ()=>{
+  const handleSignOut = () => {
     localStorage.removeItem('token')
     setUser(null)
   }
@@ -15,10 +15,10 @@ const NavBar = () => {
     <nav>
       <ul>
 
-        { user
+        {user
           ?
           <>
-            <li>Hello {user.username}</li>
+            <li>Hello {user.name}</li>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/" onClick={handleSignOut}>Sign Out</Link></li>
           </>
