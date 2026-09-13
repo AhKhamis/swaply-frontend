@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getSwaps } from '../../services/swapService';
+import SwapCard from './SwapCard';
 
 const SwapList = () => {
   const [swaps, setSwaps] = useState([]);
@@ -29,10 +30,7 @@ const SwapList = () => {
       ) : (
         <ul>
           {swaps.map((swap) => (
-            <li key={swap._id}>
-              <p>Status: {swap.status}</p>
-              <p>Swap ID: {swap._id}</p>
-            </li>
+            <SwapCard key={swap._id} swap={swap} />
           ))}
         </ul>
       )}

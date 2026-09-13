@@ -7,6 +7,7 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
+import SwapList from './components/Swaps/SwapList';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -39,6 +40,11 @@ const App = () => {
         <Route
           path="/sign-in"
           element={<SignInForm />}
+        />
+
+        <Route
+          path="/swaps"
+          element={<SwapList />}
         />
       </Routes>
     </>
