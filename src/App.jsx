@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
 import SwapList from './components/Swaps/SwapList';
+import SwapDetails from './components/Swaps/SwapDetails';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -45,6 +46,11 @@ const App = () => {
         <Route
           path="/swaps"
           element={<SwapList />}
+        />
+
+        <Route
+          path="/swaps/:swapId"
+          element={<SwapDetails />}
         />
       </Routes>
     </>
