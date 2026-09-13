@@ -1,87 +1,128 @@
-// SignUpForm.jsx
-
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
-
-// Services
 import { signUp } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
 
-
-const SignUpForm = (props) => {
-  const { setUser } = useContext(UserContext)
+const SignUpForm = () => {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
   const [message, setMessage] = useState('');
+
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
+    email: '',
     password: '',
     passwordConf: '',
   });
 
-  const { username, password, passwordConf } = formData;
+  const { name, email, password, passwordConf } = formData;
 
   const handleChange = (evt) => {
     setMessage('');
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+
+    setFormData({
+      ...formData,
+      [evt.target.name]: evt.target.value,
+    });
   };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
     try {
       const newUser = await signUp(formData);
-      setUser(newUser)
-      navigate('/')
-    } catch (error) {
-      console.log(error.message)
-    }
 
+      setUser(newUser);
+
+      navigate('/');
+    } catch (error) {
+      setMessage(error.message);
+    }
   };
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(
+      name &&
+      email &&
+      password &&
+      password === passwordConf
+    );
   };
 
   return (
     <main>
       <h1>Sign Up</h1>
+
       <p>{message}</p>
-      <form onSubmit={handleSubmit}>
+
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='username'>Username:</label>
+          <label htmlFor="name">Name:</label>
+
           <input
-            type='text'
-            id='name'
-            value={username}
-            name='username'
+            type="text"
+            id="name"
+            value={name}
+            name="name"
             onChange={handleChange}
             required
           />
         </div>
+
         <div>
-          <label htmlFor='password'>Password:</label>
+          <label htmlFor="email">Email:</label>
+
           <input
-            type='password'
-            id='password'
+            type="email"
+            id="email"
+            value={email}
+            name="email"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password:</label>
+
+          <input
+            type="password"
+            id="password"
             value={password}
-            name='password'
+            name="password"
             onChange={handleChange}
             required
           />
         </div>
+
         <div>
-          <label htmlFor='confirm'>Confirm Password:</label>
+          <label htmlFor="confirm">Confirm Password:</label>
+
           <input
-            type='password'
-            id='confirm'
+            type="password"
+            id="confirm"
             value={passwordConf}
-            name='passwordConf'
+            name="passwordConf"
             onChange={handleChange}
             required
           />
         </div>
+
         <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+          <button
+            type="submit"
+            disabled={isFormInvalid()}
+          >
+            Sign Up
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate('/')}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </main>
