@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
 
 import { UserContext } from './contexts/UserContext';
@@ -19,7 +20,15 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={user ? <Dashboard /> : <Landing />}
+          element={
+            !user ? (
+              <Landing />
+            ) : user.role === 'admin' ? (
+              <AdminDashboard />
+            ) : (
+              <Dashboard />
+            )
+          }
         />
 
         <Route
