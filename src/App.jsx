@@ -2,15 +2,24 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
+
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
+
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
+
 import Profile from './components/Profile/Profile';
 import ProfileForm from './components/Profile/ProfileForm';
 
+import SkillsList from './components/Skills/SkillsList';
+import SkillForm from './components/Skills/SkillForm';
+import SkillDetails from './components/Skills/SkillDetails';
+
 import { UserContext } from './contexts/UserContext';
+
+import './App.css';
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -54,6 +63,27 @@ const App = () => {
         <Route
           path="/profile/edit"
           element={user ? <ProfileForm /> : <SignInForm />}
+        />
+
+        {/* Skills */}
+        <Route
+          path="/skills"
+          element={user ? <SkillsList /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/new"
+          element={user ? <SkillForm /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/:id"
+          element={user ? <SkillDetails /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/:id/edit"
+          element={user ? <SkillForm /> : <SignInForm />}
         />
       </Routes>
     </>

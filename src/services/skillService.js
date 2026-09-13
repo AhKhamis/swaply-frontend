@@ -44,15 +44,22 @@ const getSkill = async (id) => {
   }
 };
 
-const createSkill = async (skillData) => {
+const createSkill = async (skillData, image) => {
   try {
+    const formData = new FormData();
+
+    formData.append('name', skillData.name);
+    formData.append('category', skillData.category);
+    formData.append('description', skillData.description);
+
+    if (image) {
+      formData.append('skillImage', image);
+    }
+
     const res = await fetch(BASE_URL, {
       method: 'POST',
-      headers: {
-        ...getAuthHeaders(),
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(skillData),
+      headers: getAuthHeaders(),
+      body: formData,
     });
 
     const data = await res.json();
@@ -68,15 +75,22 @@ const createSkill = async (skillData) => {
   }
 };
 
-const updateSkill = async (id, skillData) => {
+const updateSkill = async (id, skillData, image) => {
   try {
+    const formData = new FormData();
+
+    formData.append('name', skillData.name);
+    formData.append('category', skillData.category);
+    formData.append('description', skillData.description);
+
+    if (image) {
+      formData.append('skillImage', image);
+    }
+
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'PUT',
-      headers: {
-        ...getAuthHeaders(),
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(skillData),
+      headers: getAuthHeaders(),
+      body: formData,
     });
 
     const data = await res.json();
