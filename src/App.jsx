@@ -10,7 +10,8 @@ import Landing from './components/Landing/Landing';
 import SwapList from './components/Swaps/SwapList';
 import SwapDetails from './components/Swaps/SwapDetails';
 import SwapForm from './components/Swaps/SwapForm';
-
+import ReviewList from './components/Reviews/ReviewList';
+import ReviewForm from './components/Reviews/ReviewForm';
 import { UserContext } from './contexts/UserContext';
 
 const App = () => {
@@ -57,6 +58,16 @@ const App = () => {
         <Route
           path="/swaps/new"
           element={<SwapForm />}
+        />
+
+        <Route
+          path="/reviews"
+          element={<ReviewList />}
+        />
+
+        <Route
+          path="/reviews/new"
+          element={<ReviewForm />}
         />
       </Routes>
     </>
