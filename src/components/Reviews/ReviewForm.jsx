@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useSearchParams } from 'react-router';
 import { createReview } from '../../services/reviewService';
 
 const ReviewForm = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const reviewedUser = searchParams.get('reviewedUser');
+  const swap = searchParams.get('swap');
 
   const [formData, setFormData] = useState({
     reviewedUser: '',
@@ -12,6 +16,7 @@ const ReviewForm = () => {
     comment: '',
   });
 
+  
   const [message, setMessage] = useState('');
 
   const handleChange = (evt) => {

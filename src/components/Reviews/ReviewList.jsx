@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getReviews } from '../../services/reviewService';
-import ReviewCard from './ReviewCard';
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -30,10 +29,12 @@ const ReviewList = () => {
       ) : (
         <ul>
           {reviews.map((review) => (
-            <ReviewCard
-              key={review._id}
-              review={review}
-            />
+            <li key={review._id}>
+              <p>Rating: {review.rating}</p>
+              <p>Comment: {review.comment}</p>
+              <p>Reviewer: {review.reviewer}</p>
+              <p>Reviewed User: {review.reviewedUser}</p>
+            </li>
           ))}
         </ul>
       )}
