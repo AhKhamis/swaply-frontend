@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 import { UserContext } from '../../contexts/UserContext';
-
 import { getDashboard } from '../../services/adminService';
 
 const AdminDashboard = () => {
@@ -21,7 +20,6 @@ const AdminDashboard = () => {
     const loadDashboard = async () => {
       try {
         const data = await getDashboard();
-
         setStatistics(data);
       } catch (err) {
         setMessage(err.message);
@@ -36,13 +34,9 @@ const AdminDashboard = () => {
       <section className="admin-header">
         <h1>Admin Dashboard</h1>
 
-        <p>
-          Welcome, {user?.name}!
-        </p>
+        <p>Welcome, {user?.name}!</p>
 
-        <p>
-          Manage the Swaply platform from here.
-        </p>
+        <p>Manage the Swaply platform from here.</p>
       </section>
 
       {message && (
@@ -77,21 +71,13 @@ const AdminDashboard = () => {
         <h2>Management</h2>
 
         <div className="admin-management-grid">
-          <Link to="/admin/users">
-            Users
-          </Link>
+          <Link to="/admin/users">Users</Link>
 
-          <Link to="/admin/skills">
-            Skills
-          </Link>
+          <Link to="/admin/skills">Skills</Link>
 
-          <Link to="/admin/swaps">
-            Swap Requests
-          </Link>
+          <Link to="/admin/swaps">Swap Requests</Link>
 
-          <Link to="/admin/reviews">
-            Reviews
-          </Link>
+          <Link to="/admin/reviews">Reviews</Link>
         </div>
       </section>
     </main>

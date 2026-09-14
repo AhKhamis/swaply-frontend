@@ -103,13 +103,10 @@ const getReviews = async () => {
 
 const deleteUser = async (userId) => {
   try {
-    const res = await fetch(
-      `${BASE_URL}/users/${userId}`,
-      {
-        method: 'DELETE',
-        headers: getAuthHeaders(),
-      }
-    );
+    const res = await fetch(`${BASE_URL}/users/${userId}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
 
     const data = await res.json();
 
@@ -126,13 +123,10 @@ const deleteUser = async (userId) => {
 
 const deleteSkill = async (skillId) => {
   try {
-    const res = await fetch(
-      `${BASE_URL}/skills/${skillId}`,
-      {
-        method: 'DELETE',
-        headers: getAuthHeaders(),
-      }
-    );
+    const res = await fetch(`${BASE_URL}/skills/${skillId}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
 
     const data = await res.json();
 
@@ -149,13 +143,10 @@ const deleteSkill = async (skillId) => {
 
 const deleteReview = async (reviewId) => {
   try {
-    const res = await fetch(
-      `${BASE_URL}/reviews/${reviewId}`,
-      {
-        method: 'DELETE',
-        headers: getAuthHeaders(),
-      }
-    );
+    const res = await fetch(`${BASE_URL}/reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
 
     const data = await res.json();
 

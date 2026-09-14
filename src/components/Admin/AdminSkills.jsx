@@ -14,7 +14,6 @@ const AdminSkills = () => {
     const loadSkills = async () => {
       try {
         const data = await getSkills();
-
         setSkills(data);
       } catch (err) {
         setMessage(err.message);
@@ -39,10 +38,8 @@ const AdminSkills = () => {
 
       await deleteSkill(skillId);
 
-      setSkills(
-        skills.filter(
-          (skill) => skill._id !== skillId
-        )
+      setSkills((currentSkills) =>
+        currentSkills.filter((skill) => skill._id !== skillId)
       );
     } catch (err) {
       setMessage(err.message);
@@ -99,12 +96,8 @@ const AdminSkills = () => {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    handleDelete(skill._id)
-                  }
-                  disabled={
-                    deletingId === skill._id
-                  }
+                  onClick={() => handleDelete(skill._id)}
+                  disabled={deletingId === skill._id}
                 >
                   {deletingId === skill._id
                     ? 'Deleting...'

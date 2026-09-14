@@ -14,7 +14,6 @@ const AdminUsers = () => {
     const loadUsers = async () => {
       try {
         const data = await getUsers();
-
         setUsers(data);
       } catch (err) {
         setMessage(err.message);
@@ -39,8 +38,8 @@ const AdminUsers = () => {
 
       await deleteUser(userId);
 
-      setUsers(
-        users.filter((user) => user._id !== userId)
+      setUsers((currentUsers) =>
+        currentUsers.filter((user) => user._id !== userId)
       );
     } catch (err) {
       setMessage(err.message);
@@ -83,16 +82,12 @@ const AdminUsers = () => {
 
                   <td>{user.role}</td>
 
-                  <td>
-                    {user.bio || 'No bio'}
-                  </td>
+                  <td>{user.bio || 'No bio'}</td>
 
                   <td>
                     <button
                       type="button"
-                      onClick={() =>
-                        handleDelete(user._id)
-                      }
+                      onClick={() => handleDelete(user._id)}
                       disabled={deletingId === user._id}
                     >
                       {deletingId === user._id

@@ -7,11 +7,12 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 
 import Dashboard from './components/Dashboard/Dashboard';
-import AdminDashboard from './components/AdminDashboard/AdminDashboard';
-import AdminUsers from './components/AdminUsers/AdminUsers';
-import AdminSkills from './components/AdminSkills/AdminSkills';
-import AdminSwaps from './components/AdminSwaps/AdminSwaps';
-import AdminReviews from './components/AdminReviews/AdminReviews';
+
+import AdminDashboard from './components/Admin/AdminDashboard';
+import AdminUsers from './components/Admin/AdminUsers';
+import AdminSkills from './components/Admin/AdminSkills';
+import AdminSwaps from './components/Admin/AdminSwaps';
+import AdminReviews from './components/Admin/AdminReviews';
 
 import Landing from './components/Landing/Landing';
 
@@ -21,6 +22,15 @@ import ProfileForm from './components/Profile/ProfileForm';
 import SkillsList from './components/Skills/SkillsList';
 import SkillForm from './components/Skills/SkillForm';
 import SkillDetails from './components/Skills/SkillDetails';
+
+import SwapList from './components/Swaps/SwapList';
+import SwapDetails from './components/Swaps/SwapDetails';
+import SwapForm from './components/Swaps/SwapForm';
+import SwapEdit from './components/Swaps/SwapEdit';
+
+import ReviewList from './components/Reviews/ReviewList';
+import ReviewDetails from './components/Reviews/ReviewDetails';
+import ReviewForm from './components/Reviews/ReviewForm';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -98,6 +108,55 @@ const App = () => {
         />
 
         <Route
+          path="/swaps"
+          element={
+            user ? <SwapList /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/swaps/new"
+          element={
+            user ? <SwapForm /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/swaps/:swapId"
+          element={
+            user ? <SwapDetails /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/swaps/:swapId/edit"
+          element={
+            user ? <SwapEdit /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/reviews"
+          element={
+            user ? <ReviewList /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/reviews/:reviewId"
+          element={
+            user ? <ReviewDetails /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/reviews/new"
+          element={
+            user ? <ReviewForm /> : <SignInForm />
+          }
+        />
+
+        <Route
           path="/admin"
           element={
             isAdmin ? (
@@ -168,3 +227,4 @@ const App = () => {
 };
 
 export default App;
+

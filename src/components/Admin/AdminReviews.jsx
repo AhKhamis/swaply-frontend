@@ -14,7 +14,6 @@ const AdminReviews = () => {
     const loadReviews = async () => {
       try {
         const data = await getReviews();
-
         setReviews(data);
       } catch (err) {
         setMessage(err.message);
@@ -39,8 +38,8 @@ const AdminReviews = () => {
 
       await deleteReview(reviewId);
 
-      setReviews(
-        reviews.filter(
+      setReviews((currentReviews) =>
+        currentReviews.filter(
           (review) => review._id !== reviewId
         )
       );
@@ -70,7 +69,7 @@ const AdminReviews = () => {
               <tr>
                 <th>Reviewer</th>
                 <th>Reviewed User</th>
-                <th>Skill</th>
+                <th>Swap</th>
                 <th>Rating</th>
                 <th>Comment</th>
                 <th>Action</th>
@@ -81,28 +80,25 @@ const AdminReviews = () => {
               {reviews.map((review) => (
                 <tr key={review._id}>
                   <td>
-                    {review.reviewer?.name ||
+                    {review.reviewer?.name || 'Unknown'}
+                  </td>
+
+                  <td>
+                    {review.reviewedUser?.name || 'Unknown'}
+                  </td>
+
+                  <td>
+                    {review.swap?._id ||
+                      review.swap ||
                       'Unknown'}
                   </td>
 
                   <td>
-                    {review.reviewedUser?.name ||
-                      'Unknown'}
+                    {review.rating ?? 'N/A'}/5
                   </td>
 
                   <td>
-                    {review.skill?.name ||
-                      'Unknown'}
-                  </td>
-
-                  <td>
-                    {review.rating ?? 'N/A'}
-                  </td>
-
-                  <td>
-                    {review.comment ||
-                      review.text ||
-                      'No comment'}
+                    {review.comment || 'No comment'}
                   </td>
 
                   <td>

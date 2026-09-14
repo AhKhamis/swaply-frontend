@@ -10,7 +10,6 @@ const AdminSwaps = () => {
     const loadSwaps = async () => {
       try {
         const data = await getSwaps();
-
         setSwaps(data);
       } catch (err) {
         setMessage(err.message);
@@ -38,10 +37,11 @@ const AdminSwaps = () => {
             <thead>
               <tr>
                 <th>Requester</th>
-                <th>Recipient</th>
-                <th>Skill</th>
+                <th>Receiver</th>
+                <th>Skill Offered</th>
+                <th>Skill Requested</th>
                 <th>Status</th>
-                <th>Date</th>
+                <th>Scheduled Date</th>
               </tr>
             </thead>
 
@@ -49,18 +49,19 @@ const AdminSwaps = () => {
               {swaps.map((swap) => (
                 <tr key={swap._id}>
                   <td>
-                    {swap.requester?.name ||
-                      'Unknown'}
+                    {swap.requester?.name || 'Unknown'}
                   </td>
 
                   <td>
-                    {swap.recipient?.name ||
-                      'Unknown'}
+                    {swap.receiver?.name || 'Unknown'}
                   </td>
 
                   <td>
-                    {swap.skill?.name ||
-                      'Unknown'}
+                    {swap.skillOffered?.name || 'Unknown'}
+                  </td>
+
+                  <td>
+                    {swap.skillRequested?.name || 'Unknown'}
                   </td>
 
                   <td>
@@ -68,11 +69,11 @@ const AdminSwaps = () => {
                   </td>
 
                   <td>
-                    {swap.createdAt
+                    {swap.scheduledDate
                       ? new Date(
-                        swap.createdAt
+                        swap.scheduledDate
                       ).toLocaleDateString()
-                      : 'Unknown'}
+                      : 'Not scheduled'}
                   </td>
                 </tr>
               ))}
