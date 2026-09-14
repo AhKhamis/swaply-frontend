@@ -25,6 +25,10 @@ const SignInForm = () => {
     });
   };
 
+  const isFormInvalid = () => {
+    return !formData.email || !formData.password;
+  };
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
@@ -113,6 +117,7 @@ const SignInForm = () => {
             <button
               className="auth-primary-button"
               type="submit"
+              disabled={isFormInvalid()}
             >
               Login
             </button>

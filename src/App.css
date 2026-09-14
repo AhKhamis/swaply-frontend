@@ -63,7 +63,6 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 50px 65px;
-  overflow-y: auto;
 }
 
 .auth-form-section h1 {
@@ -186,7 +185,8 @@ body {
 }
 
 .auth-primary-button:disabled {
-  background: #b8b9d6;
+  background: #382bff;
+  opacity: 0.45;
   color: #ffffff;
   cursor: not-allowed;
 }
@@ -196,7 +196,8 @@ body {
 ========================= */
 
 .auth-switch {
-  margin: 20px 0 0;
+  margin: 14px 0 4px;
+  ;
   text-align: center;
   color: #666666;
   font-size: 13px;
@@ -254,7 +255,6 @@ body {
 
   .auth-form-section {
     padding: 40px 30px;
-    overflow-y: visible;
   }
 
   .auth-form-section h1 {
