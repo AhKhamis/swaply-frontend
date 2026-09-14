@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router';
 
 import {
   getProfile,
+  updateProfile,
   deleteProfile,
 } from '../../services/userService';
 
@@ -14,6 +15,8 @@ const Profile = () => {
 
   const { setUser } = useContext(UserContext);
 
+  const fileInputRef = useRef(null);
+
   const [user, setProfile] = useState(null);
 
   const [message, setMessage] = useState('');
@@ -22,6 +25,8 @@ const Profile = () => {
     useState(false);
 
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const [isUploading, setIsUploading] = useState(false);
 
   const [activeTab, setActiveTab] = useState('about');
 
@@ -38,6 +43,40 @@ const Profile = () => {
 
     loadProfile();
   }, []);
+
+  const handleProfileImageChange = async (evt) => {
+    const file = evt.target.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    try {
+      setIsUploading(true);
+      setMessage('');
+
+      const data = new FormData();
+
+      data.append('name', user.name || '');
+
+      data.append('bio', user.bio || '');
+
+      data.append('profileImage', file);
+
+      const updatedUser = await updateProfile(data);
+
+      setProfile(updatedUser);
+
+      setUser(updatedUser);
+
+    } catch (err) {
+      setMessage(err.message);
+    } finally {
+      setIsUploading(false);
+
+      evt.target.value = '';
+    }
+  };
 
   const handleDeleteAccount = async () => {
     try {
@@ -80,6 +119,10 @@ const Profile = () => {
         </p>
       )}
 
+      {/* =========================================
+          PROFILE HEADER
+      ========================================= */}
+
       <section className="profile-header">
 
         <div className="profile-image-section">
@@ -97,11 +140,25 @@ const Profile = () => {
               </div>
             )}
 
-            <Link
-              to="/profile/edit"
+            {/* Hidden file input */}
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/png, image/jpeg"
+              className="profile-image-input"
+              onChange={handleProfileImageChange}
+            />
+
+            {/* Camera button */}
+
+            <button
+              type="button"
               className="profile-camera-button"
-              aria-label="Edit profile photo"
-              title="Edit profile photo"
+              aria-label="Change profile photo"
+              title="Change profile photo"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isUploading}
             >
               <svg
                 viewBox="0 0 24 24"
@@ -110,13 +167,14 @@ const Profile = () => {
                 <path
                   d="M9 5l1.5-2h3L15 5h3a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h3z"
                 />
+
                 <circle
                   cx="12"
                   cy="12"
                   r="3.5"
                 />
               </svg>
-            </Link>
+            </button>
 
           </div>
 
@@ -124,13 +182,9 @@ const Profile = () => {
 
         <div className="profile-info">
 
-          <span className="profile-label">
-            SWAPLY MEMBER
-          </span>
-
-          <h1>
+          <h2>
             {user.name}
-          </h1>
+          </h2>
 
           <p className="profile-email">
             {user.email}
@@ -155,6 +209,10 @@ const Profile = () => {
         </div>
 
       </section>
+
+      {/* =========================================
+          PROFILE CONTENT
+      ========================================= */}
 
       <section className="profile-content">
 
@@ -260,9 +318,14 @@ const Profile = () => {
 
       </section>
 
+      {/* =========================================
+          DANGER ZONE
+      ========================================= */}
+
       <section className="profile-danger-zone">
 
         <div>
+
           <h2>
             Danger Zone
           </h2>
@@ -271,6 +334,7 @@ const Profile = () => {
             Permanently delete your Swaply account and all
             associated data.
           </p>
+
         </div>
 
         {!showDeleteConfirmation ? (
