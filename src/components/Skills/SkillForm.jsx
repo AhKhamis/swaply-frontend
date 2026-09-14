@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router';
 
 import {
   createSkill,
@@ -10,8 +15,11 @@ import {
 const SkillForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const isEditing = Boolean(id);
+
+  const returnTo = location.state?.from || '/skills';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -84,7 +92,7 @@ const SkillForm = () => {
         await createSkill(formData, image);
       }
 
-      navigate('/skills');
+      navigate(returnTo);
     } catch (err) {
       setMessage(err.message);
       setIsSaving(false);
@@ -93,10 +101,13 @@ const SkillForm = () => {
 
   return (
     <main className="skill-form-page">
+
       <section className="skill-form-header">
+
         <h1>
           {isEditing ? 'Edit Skill' : 'Add New Skill'}
         </h1>
+
       </section>
 
       {message && (
@@ -109,8 +120,11 @@ const SkillForm = () => {
         className="skill-form"
         onSubmit={handleSubmit}
       >
+
         <div className="skill-form-fields">
+
           <div className="form-field">
+
             <label htmlFor="name">
               Skill Name:
             </label>
@@ -124,9 +138,11 @@ const SkillForm = () => {
               placeholder="Enter skill name"
               required
             />
+
           </div>
 
           <div className="form-field">
+
             <label htmlFor="category">
               Category:
             </label>
@@ -140,9 +156,11 @@ const SkillForm = () => {
               placeholder="Programming, Design, Language..."
               required
             />
+
           </div>
 
           <div className="form-field">
+
             <label htmlFor="description">
               Description:
             </label>
@@ -156,15 +174,19 @@ const SkillForm = () => {
               rows="7"
               required
             />
+
           </div>
+
         </div>
 
         <div className="skill-image-upload">
+
           <label htmlFor="skillImage">
             Skill Image
           </label>
 
           <div className="image-preview-large">
+
             {image ? (
               <img
                 src={URL.createObjectURL(image)}
@@ -176,8 +198,11 @@ const SkillForm = () => {
                 alt="Current skill"
               />
             ) : (
-              <span>IMAGE</span>
+              <span>
+                IMAGE
+              </span>
             )}
+
           </div>
 
           <input
@@ -187,9 +212,11 @@ const SkillForm = () => {
             accept="image/png, image/jpeg"
             onChange={handleImageChange}
           />
+
         </div>
 
         <div className="skill-form-actions">
+
           <button
             type="submit"
             disabled={isSaving}
@@ -203,13 +230,16 @@ const SkillForm = () => {
 
           <button
             type="button"
-            onClick={() => navigate('/skills')}
+            onClick={() => navigate(returnTo)}
             disabled={isSaving}
           >
             Cancel
           </button>
+
         </div>
+
       </form>
+
     </main>
   );
 };

@@ -3732,3 +3732,238 @@ body {
     font-size: 14px;
   }
 }
+
+/* =========================================
+   PROFILE SKILLS
+========================================= */
+
+.profile-skills-content {
+  width: 100%;
+}
+
+.profile-skills-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-skills-heading h2 {
+  margin: 7px 0 6px;
+  color: var(--navy);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.profile-skills-heading p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-add-skill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 145px;
+  padding: 11px 20px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-add-skill-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.profile-no-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 35px;
+  border: 1px dashed #d8d5e4;
+  border-radius: 18px;
+  text-align: center;
+  background: #faf9fc;
+}
+
+.profile-no-skills-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  background: #f0eef8;
+  color: var(--navy);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.profile-no-skills h3 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 19px;
+}
+
+.profile-no-skills p {
+  max-width: 450px;
+  margin: 0 0 22px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.profile-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.profile-skill-card {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #eeeaf5;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+}
+
+.profile-skill-image {
+  width: 125px;
+  min-width: 125px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f0eef8;
+  color: var(--navy);
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.profile-skill-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-skill-card-content {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.profile-skill-card-content h3 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.profile-skill-category {
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #f0eef8;
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.profile-skill-card-content p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 18px;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.profile-view-skill-button {
+  align-self: flex-start;
+  margin-top: auto;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-view-skill-button:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.profile-image-input {
+  display: none;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+  .profile-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-skills-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .profile-skills-heading h2 {
+    font-size: 24px;
+  }
+
+  .profile-add-skill-button {
+    width: 100%;
+  }
+
+  .profile-no-skills {
+    padding: 25px 20px;
+  }
+
+  .profile-skill-image {
+    width: 105px;
+    min-width: 105px;
+    height: 165px;
+  }
+
+  .profile-skill-card-content {
+    padding: 16px;
+  }
+}
