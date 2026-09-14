@@ -2,11 +2,18 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
+
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 
 import Dashboard from './components/Dashboard/Dashboard';
-import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+
+import AdminDashboard from './components/Admin/AdminDashboard';
+import AdminUsers from './components/Admin/AdminUsers';
+import AdminSkills from './components/Admin/AdminSkills';
+import AdminSwaps from './components/Admin/AdminSwaps';
+import AdminReviews from './components/Admin/AdminReviews';
+
 import Landing from './components/Landing/Landing';
 
 import Profile from './components/Profile/Profile';
@@ -27,23 +34,22 @@ import ReviewForm from './components/Reviews/ReviewForm';
 
 import { UserContext } from './contexts/UserContext';
 
-import './App.css';
-
 const App = () => {
   const { user } = useContext(UserContext);
+
+  const isAdmin = user?.role === 'admin';
 
   return (
     <>
       <NavBar />
 
       <Routes>
-        {/* Home */}
         <Route
           path="/"
           element={
             !user ? (
               <Landing />
-            ) : user.role === 'admin' ? (
+            ) : isAdmin ? (
               <AdminDashboard />
             ) : (
               <Dashboard />
@@ -51,7 +57,6 @@ const App = () => {
           }
         />
 
-        {/* Authentication */}
         <Route
           path="/sign-up"
           element={<SignUpForm />}
@@ -62,73 +67,161 @@ const App = () => {
           element={<SignInForm />}
         />
 
-        {/* Profile */}
         <Route
           path="/profile"
-          element={user ? <Profile /> : <SignInForm />}
+          element={
+            user ? <Profile /> : <SignInForm />
+          }
         />
 
         <Route
           path="/profile/edit"
-          element={user ? <ProfileForm /> : <SignInForm />}
+          element={
+            user ? <ProfileForm /> : <SignInForm />
+          }
         />
 
-        {/* Skills */}
         <Route
           path="/skills"
-          element={user ? <SkillsList /> : <SignInForm />}
+          element={
+            user ? <SkillsList /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/new"
-          element={user ? <SkillForm /> : <SignInForm />}
+          element={
+            user ? <SkillForm /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/:id"
-          element={user ? <SkillDetails /> : <SignInForm />}
+          element={
+            user ? <SkillDetails /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/:id/edit"
-          element={user ? <SkillForm /> : <SignInForm />}
+          element={
+            user ? <SkillForm /> : <SignInForm />
+          }
         />
 
-        {/* Swaps */}
         <Route
           path="/swaps"
-          element={user ? <SwapList /> : <SignInForm />}
+          element={
+            user ? <SwapList /> : <SignInForm />
+          }
         />
 
         <Route
           path="/swaps/new"
-          element={user ? <SwapForm /> : <SignInForm />}
+          element={
+            user ? <SwapForm /> : <SignInForm />
+          }
         />
 
         <Route
           path="/swaps/:swapId"
-          element={user ? <SwapDetails /> : <SignInForm />}
+          element={
+            user ? <SwapDetails /> : <SignInForm />
+          }
         />
 
         <Route
           path="/swaps/:swapId/edit"
-          element={user ? <SwapEdit /> : <SignInForm />}
+          element={
+            user ? <SwapEdit /> : <SignInForm />
+          }
         />
 
-        {/* Reviews */}
         <Route
           path="/reviews"
-          element={user ? <ReviewList /> : <SignInForm />}
+          element={
+            user ? <ReviewList /> : <SignInForm />
+          }
         />
 
         <Route
           path="/reviews/:reviewId"
-          element={user ? <ReviewDetails /> : <SignInForm />}
+          element={
+            user ? <ReviewDetails /> : <SignInForm />
+          }
         />
 
         <Route
           path="/reviews/new"
-          element={user ? <ReviewForm /> : <SignInForm />}
+          element={
+            user ? <ReviewForm /> : <SignInForm />
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            isAdmin ? (
+              <AdminDashboard />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            isAdmin ? (
+              <AdminDashboard />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/users"
+          element={
+            isAdmin ? (
+              <AdminUsers />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/skills"
+          element={
+            isAdmin ? (
+              <AdminSkills />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/swaps"
+          element={
+            isAdmin ? (
+              <AdminSwaps />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/reviews"
+          element={
+            isAdmin ? (
+              <AdminReviews />
+            ) : (
+              <SignInForm />
+            )
+          }
         />
       </Routes>
     </>
