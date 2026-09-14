@@ -62,7 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px 65px;
+  padding: 40px 65px;
 }
 
 .auth-form-section h1 {
@@ -73,7 +73,7 @@ body {
 }
 
 .auth-subtitle {
-  margin: 8px 0 30px;
+  margin: 6px 0 24px;
   color: #666666;
   font-size: 14px;
   line-height: 1.6;
@@ -88,7 +88,7 @@ body {
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .form-group label {
@@ -130,7 +130,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2px 0 22px;
+  margin: 2px 0 20px;
 }
 
 .remember-me {
@@ -196,8 +196,7 @@ body {
 ========================= */
 
 .auth-switch {
-  margin: 14px 0 4px;
-  ;
+  margin: 14px 0 0;
   text-align: center;
   color: #666666;
   font-size: 13px;
