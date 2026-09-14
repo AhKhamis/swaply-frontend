@@ -35,6 +35,8 @@ import ReviewForm from './components/Reviews/ReviewForm';
 import { UserContext } from './contexts/UserContext';
 import './App.css';
 
+import './App.css';
+
 const App = () => {
   const { user } = useContext(UserContext);
 
