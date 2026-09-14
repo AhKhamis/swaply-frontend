@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { Link } from 'react-router';
-
 import { UserContext } from '../../contexts/UserContext';
 
 const NavBar = () => {
@@ -13,105 +12,80 @@ const NavBar = () => {
 
   if (user?.role === 'admin') {
     return (
-      <nav>
-        <ul>
-          <li>
-            <Link to="/admin/dashboard">
-              Admin Dashboard
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="navbar-left">
+            <Link to="/" className="navbar-logo">
+              <img src="/logo.png" alt="Swaply" />
             </Link>
-          </li>
 
-          <li>
-            <Link to="/admin/users">
-              Users
-            </Link>
-          </li>
+            <div className="navbar-center">
+              <Link to="/admin/dashboard">Dashboard</Link>
+              <Link to="/admin/users">Users</Link>
+              <Link to="/admin/skills">Skills</Link>
+              <Link to="/admin/swaps">Swap Requests</Link>
+              <Link to="/admin/reviews">Reviews</Link>
+            </div>
+          </div>
 
-          <li>
-            <Link to="/admin/skills">
-              Skills
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/admin/swaps">
-              Swap Requests
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/admin/reviews">
-              Reviews
-            </Link>
-          </li>
-
-          <li>
+          <div className="navbar-right">
             <Link
               to="/"
               onClick={handleSignOut}
+              className="navbar-signout"
             >
               Sign Out
             </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
     );
   }
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <div className="navbar-left">
+          <Link to="/" className="navbar-logo">
+            <img src="/logo.png" alt="Swaply" />
+          </Link>
 
-        <li>
-          <Link to="/skills">Skills</Link>
-        </li>
+          <div className="navbar-center">
+            <Link to="/">Home</Link>
+            <Link to="/skills">Skills</Link>
+            <Link to="/community">Community</Link>
 
-        <li>
-          <Link to="/community">Community</Link>
-        </li>
+            {user && (
+              <>
+                <Link to="/swaps">My Swaps</Link>
+                <Link to="/profile">Profile</Link>
+              </>
+            )}
+          </div>
+        </div>
 
-        {!user ? (
-          <>
-            <li>
-              <Link to="/sign-up">
-                Sign Up
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/sign-in">
+        <div className="navbar-right">
+          {user ? (
+            <Link
+              to="/"
+              onClick={handleSignOut}
+              className="navbar-signout"
+            >
+              Sign Out
+            </Link>
+          ) : (
+            <>
+              <Link to="/sign-in" className="navbar-signin">
                 Sign In
               </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/swaps">
-                My Swaps
-              </Link>
-            </li>
 
-            <li>
-              <Link to="/profile">
-                Profile
+              <Link to="/sign-up" className="navbar-signup">
+                Sign Up
               </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/"
-                onClick={handleSignOut}
-              >
-                Sign Out
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+            </>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };
