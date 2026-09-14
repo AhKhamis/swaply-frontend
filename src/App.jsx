@@ -8,6 +8,11 @@ import SignInForm from './components/SignInForm/SignInForm';
 
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import AdminUsers from './components/AdminUsers/AdminUsers';
+import AdminSkills from './components/AdminSkills/AdminSkills';
+import AdminSwaps from './components/AdminSwaps/AdminSwaps';
+import AdminReviews from './components/AdminReviews/AdminReviews';
+
 import Landing from './components/Landing/Landing';
 
 import Profile from './components/Profile/Profile';
@@ -17,30 +22,24 @@ import SkillsList from './components/Skills/SkillsList';
 import SkillForm from './components/Skills/SkillForm';
 import SkillDetails from './components/Skills/SkillDetails';
 
-import SwapList from './components/Swaps/SwapList';
-import SwapDetails from './components/Swaps/SwapDetails';
-import SwapForm from './components/Swaps/SwapForm';
-import SwapEdit from './components/Swaps/SwapEdit';
-
 import { UserContext } from './contexts/UserContext';
-
-import './App.css';
 
 const App = () => {
   const { user } = useContext(UserContext);
+
+  const isAdmin = user?.role === 'admin';
 
   return (
     <>
       <NavBar />
 
       <Routes>
-        {/* Home */}
         <Route
           path="/"
           element={
             !user ? (
               <Landing />
-            ) : user.role === 'admin' ? (
+            ) : isAdmin ? (
               <AdminDashboard />
             ) : (
               <Dashboard />
@@ -48,7 +47,6 @@ const App = () => {
           }
         />
 
-        {/* Authentication */}
         <Route
           path="/sign-up"
           element={<SignUpForm />}
@@ -59,7 +57,6 @@ const App = () => {
           element={<SignInForm />}
         />
 
-        {/* Profile */}
         <Route
           path="/profile"
           element={user ? <Profile /> : <SignInForm />}
@@ -67,49 +64,103 @@ const App = () => {
 
         <Route
           path="/profile/edit"
-          element={user ? <ProfileForm /> : <SignInForm />}
+          element={
+            user ? <ProfileForm /> : <SignInForm />
+          }
         />
 
-        {/* Skills */}
         <Route
           path="/skills"
-          element={user ? <SkillsList /> : <SignInForm />}
+          element={
+            user ? <SkillsList /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/new"
-          element={user ? <SkillForm /> : <SignInForm />}
+          element={
+            user ? <SkillForm /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/:id"
-          element={user ? <SkillDetails /> : <SignInForm />}
+          element={
+            user ? <SkillDetails /> : <SignInForm />
+          }
         />
 
         <Route
           path="/skills/:id/edit"
-          element={user ? <SkillForm /> : <SignInForm />}
-        />
-
-        {/* Swaps */}
-        <Route
-          path="/swaps"
-          element={user ? <SwapList /> : <SignInForm />}
+          element={
+            user ? <SkillForm /> : <SignInForm />
+          }
         />
 
         <Route
-          path="/swaps/new"
-          element={user ? <SwapForm /> : <SignInForm />}
+          path="/admin"
+          element={
+            isAdmin ? (
+              <AdminDashboard />
+            ) : (
+              <SignInForm />
+            )
+          }
         />
 
         <Route
-          path="/swaps/:swapId"
-          element={user ? <SwapDetails /> : <SignInForm />}
+          path="/admin/dashboard"
+          element={
+            isAdmin ? (
+              <AdminDashboard />
+            ) : (
+              <SignInForm />
+            )
+          }
         />
 
         <Route
-          path="/swaps/:swapId/edit"
-          element={user ? <SwapEdit /> : <SignInForm />}
+          path="/admin/users"
+          element={
+            isAdmin ? (
+              <AdminUsers />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/skills"
+          element={
+            isAdmin ? (
+              <AdminSkills />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/swaps"
+          element={
+            isAdmin ? (
+              <AdminSwaps />
+            ) : (
+              <SignInForm />
+            )
+          }
+        />
+
+        <Route
+          path="/admin/reviews"
+          element={
+            isAdmin ? (
+              <AdminReviews />
+            ) : (
+              <SignInForm />
+            )
+          }
         />
       </Routes>
     </>

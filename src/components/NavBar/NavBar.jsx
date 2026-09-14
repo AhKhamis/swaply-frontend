@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router';
+
 import { UserContext } from '../../contexts/UserContext';
 
 const NavBar = () => {
@@ -10,33 +11,45 @@ const NavBar = () => {
     setUser(null);
   };
 
-  // Admin navbar
   if (user?.role === 'admin') {
     return (
       <nav>
         <ul>
           <li>
-            <Link to="/admin">Admin Dashboard</Link>
+            <Link to="/admin/dashboard">
+              Admin Dashboard
+            </Link>
           </li>
 
           <li>
-            <Link to="/admin/users">Users</Link>
+            <Link to="/admin/users">
+              Users
+            </Link>
           </li>
 
           <li>
-            <Link to="/admin/skills">Skills</Link>
+            <Link to="/admin/skills">
+              Skills
+            </Link>
           </li>
 
           <li>
-            <Link to="/admin/swaps">Swap Requests</Link>
+            <Link to="/admin/swaps">
+              Swap Requests
+            </Link>
           </li>
 
           <li>
-            <Link to="/admin/reviews">Reviews</Link>
+            <Link to="/admin/reviews">
+              Reviews
+            </Link>
           </li>
 
           <li>
-            <Link to="/" onClick={handleSignOut}>
+            <Link
+              to="/"
+              onClick={handleSignOut}
+            >
               Sign Out
             </Link>
           </li>
@@ -45,7 +58,6 @@ const NavBar = () => {
     );
   }
 
-  // Visitor / normal user navbar
   return (
     <nav>
       <ul>
@@ -64,25 +76,36 @@ const NavBar = () => {
         {!user ? (
           <>
             <li>
-              <Link to="/sign-up">Sign Up</Link>
+              <Link to="/sign-up">
+                Sign Up
+              </Link>
             </li>
 
             <li>
-              <Link to="/sign-in">Sign In</Link>
+              <Link to="/sign-in">
+                Sign In
+              </Link>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link to="/swaps">My Swaps</Link>
+              <Link to="/swaps">
+                My Swaps
+              </Link>
             </li>
 
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">
+                Profile
+              </Link>
             </li>
 
             <li>
-              <Link to="/" onClick={handleSignOut}>
+              <Link
+                to="/"
+                onClick={handleSignOut}
+              >
                 Sign Out
               </Link>
             </li>
