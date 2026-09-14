@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
-
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 
@@ -21,15 +20,10 @@ import SwapList from './components/Swaps/SwapList';
 import SwapDetails from './components/Swaps/SwapDetails';
 import SwapForm from './components/Swaps/SwapForm';
 import SwapEdit from './components/Swaps/SwapEdit';
-<<<<<<< Updated upstream
 
 import ReviewList from './components/Reviews/ReviewList';
 import ReviewDetails from './components/Reviews/ReviewDetails';
 import ReviewForm from './components/Reviews/ReviewForm';
-
-=======
-import ReviewList from './components/Reviews/ReviewList';
->>>>>>> Stashed changes
 
 import { UserContext } from './contexts/UserContext';
 
@@ -121,10 +115,10 @@ const App = () => {
           element={user ? <SwapEdit /> : <SignInForm />}
         />
 
+        {/* Reviews */}
         <Route
           path="/reviews"
           element={user ? <ReviewList /> : <SignInForm />}
-<<<<<<< Updated upstream
         />
 
         <Route
@@ -135,8 +129,6 @@ const App = () => {
         <Route
           path="/reviews/new"
           element={user ? <ReviewForm /> : <SignInForm />}
-=======
->>>>>>> Stashed changes
         />
       </Routes>
     </>
