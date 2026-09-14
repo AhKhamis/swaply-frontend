@@ -2,17 +2,34 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
+
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
+
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Landing from './components/Landing/Landing';
+
+import Profile from './components/Profile/Profile';
+import ProfileForm from './components/Profile/ProfileForm';
+
+import SkillsList from './components/Skills/SkillsList';
+import SkillForm from './components/Skills/SkillForm';
+import SkillDetails from './components/Skills/SkillDetails';
+
 import SwapList from './components/Swaps/SwapList';
 import SwapDetails from './components/Swaps/SwapDetails';
 import SwapForm from './components/Swaps/SwapForm';
+import SwapEdit from './components/Swaps/SwapEdit';
+
 import ReviewList from './components/Reviews/ReviewList';
+import ReviewDetails from './components/Reviews/ReviewDetails';
 import ReviewForm from './components/Reviews/ReviewForm';
+
+
 import { UserContext } from './contexts/UserContext';
+
+import './App.css';
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -22,6 +39,7 @@ const App = () => {
       <NavBar />
 
       <Routes>
+        {/* Home */}
         <Route
           path="/"
           element={
@@ -35,6 +53,7 @@ const App = () => {
           }
         />
 
+        {/* Authentication */}
         <Route
           path="/sign-up"
           element={<SignUpForm />}
@@ -45,29 +64,72 @@ const App = () => {
           element={<SignInForm />}
         />
 
+        {/* Profile */}
         <Route
-          path="/swaps"
-          element={<SwapList />}
+          path="/profile"
+          element={user ? <Profile /> : <SignInForm />}
         />
 
         <Route
-          path="/swaps/:swapId"
-          element={<SwapDetails />}
+          path="/profile/edit"
+          element={user ? <ProfileForm /> : <SignInForm />}
+        />
+
+        {/* Skills */}
+        <Route
+          path="/skills"
+          element={user ? <SkillsList /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/new"
+          element={user ? <SkillForm /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/:id"
+          element={user ? <SkillDetails /> : <SignInForm />}
+        />
+
+        <Route
+          path="/skills/:id/edit"
+          element={user ? <SkillForm /> : <SignInForm />}
+        />
+
+        {/* Swaps */}
+        <Route
+          path="/swaps"
+          element={user ? <SwapList /> : <SignInForm />}
         />
 
         <Route
           path="/swaps/new"
-          element={<SwapForm />}
+          element={user ? <SwapForm /> : <SignInForm />}
+        />
+
+        <Route
+          path="/swaps/:swapId"
+          element={user ? <SwapDetails /> : <SignInForm />}
+        />
+
+        <Route
+          path="/swaps/:swapId/edit"
+          element={user ? <SwapEdit /> : <SignInForm />}
         />
 
         <Route
           path="/reviews"
-          element={<ReviewList />}
+          element={user ? <ReviewList /> : <SignInForm />}
+        />
+
+        <Route
+          path="/reviews/:reviewId"
+          element={user ? <ReviewDetails /> : <SignInForm />}
         />
 
         <Route
           path="/reviews/new"
-          element={<ReviewForm />}
+          element={user ? <ReviewForm /> : <SignInForm />}
         />
       </Routes>
     </>
