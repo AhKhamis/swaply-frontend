@@ -69,7 +69,9 @@ const App = () => {
 
         <Route
           path="/profile"
-          element={user ? <Profile /> : <SignInForm />}
+          element={
+            user ? <Profile /> : <SignInForm />
+          }
         />
 
         <Route
@@ -227,4 +229,3 @@ const App = () => {
 };
 
 export default App;
-
