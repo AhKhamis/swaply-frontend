@@ -17,6 +17,11 @@ import SkillsList from './components/Skills/SkillsList';
 import SkillForm from './components/Skills/SkillForm';
 import SkillDetails from './components/Skills/SkillDetails';
 
+import SwapList from './components/Swaps/SwapList';
+import SwapDetails from './components/Swaps/SwapDetails';
+import SwapForm from './components/Swaps/SwapForm';
+import SwapEdit from './components/Swaps/SwapEdit';
+
 import { UserContext } from './contexts/UserContext';
 
 import './App.css';
@@ -84,6 +89,27 @@ const App = () => {
         <Route
           path="/skills/:id/edit"
           element={user ? <SkillForm /> : <SignInForm />}
+        />
+
+        {/* Swaps */}
+        <Route
+          path="/swaps"
+          element={user ? <SwapList /> : <SignInForm />}
+        />
+
+        <Route
+          path="/swaps/new"
+          element={user ? <SwapForm /> : <SignInForm />}
+        />
+
+        <Route
+          path="/swaps/:swapId"
+          element={user ? <SwapDetails /> : <SignInForm />}
+        />
+
+        <Route
+          path="/swaps/:swapId/edit"
+          element={user ? <SwapEdit /> : <SignInForm />}
         />
       </Routes>
     </>
