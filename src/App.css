@@ -278,3 +278,355 @@ body {
     gap: 10px;
   }
 }
+
+
+
+
+
+/* Skilllss  i will add now */
+/* this is only beg not the final */
+/* =========================
+   SKILLS
+========================= */
+
+.skills-page,
+.skill-details-page,
+.skill-form-page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.skills-header h1,
+.skill-form-header h1 {
+  margin-bottom: 10px;
+}
+
+.skills-header p {
+  margin: 0;
+}
+
+.add-skill-button,
+.view-skill-button {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.skills-controls {
+  margin-bottom: 30px;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-tab {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.category-tab.active {
+  font-weight: bold;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.skill-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-card-image {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+
+.skill-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-card-content {
+  padding: 20px;
+}
+
+.skill-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-card-title h2 {
+  margin: 0;
+}
+
+.skill-category,
+.skill-owner,
+.skill-review {
+  margin: 10px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.pagination .active {
+  font-weight: bold;
+}
+
+
+/* =========================
+   SKILL DETAILS
+========================= */
+
+.skill-details-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.skill-details-image {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+
+.skill-details-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-details-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-details-title h1 {
+  margin: 0;
+}
+
+.skill-tags {
+  margin: 20px 0;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.skill-owner-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.owner-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+}
+
+.owner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.skill-actions button {
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.skill-owner-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.skill-owner-actions a,
+.skill-owner-actions button {
+  padding: 10px 16px;
+}
+
+.delete-confirmation {
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.delete-confirmation button {
+  margin-right: 10px;
+}
+
+.about-skill {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+}
+
+
+/* =========================
+   SKILL FORM
+========================= */
+
+.skill-form {
+  max-width: 800px;
+}
+
+.skill-form-fields {
+  margin-bottom: 30px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.skill-image-upload {
+  margin-top: 30px;
+}
+
+.skill-image-upload>label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.image-preview-large {
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.image-preview-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.skill-form-actions button {
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.form-message {
+  margin: 20px 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-details-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .skill-actions,
+  .skill-owner-actions,
+  .skill-form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
