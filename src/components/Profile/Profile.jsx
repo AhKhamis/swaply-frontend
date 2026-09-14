@@ -1,25 +1,33 @@
 import { useContext, useEffect, useState } from 'react';
+
 import { Link, useNavigate } from 'react-router';
+
 import {
   getProfile,
   deleteProfile,
 } from '../../services/userService';
+
 import { UserContext } from '../../contexts/UserContext';
 
 const Profile = () => {
   const navigate = useNavigate();
+
   const { setUser } = useContext(UserContext);
 
   const [user, setProfile] = useState(null);
+
   const [message, setMessage] = useState('');
+
   const [showDeleteConfirmation, setShowDeleteConfirmation] =
     useState(false);
+
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const loadProfile = async () => {
       try {
         const profile = await getProfile();
+
         setProfile(profile);
       } catch (err) {
         setMessage(err.message);
@@ -32,56 +40,90 @@ const Profile = () => {
   const handleDeleteAccount = async () => {
     try {
       setIsDeleting(true);
+
       setMessage('');
 
       await deleteProfile();
 
       localStorage.removeItem('token');
+
       setUser(null);
+
       navigate('/');
     } catch (err) {
       setMessage(err.message);
+
       setIsDeleting(false);
     }
   };
 
   if (!user) {
     return (
-      <main>
-        {message || 'Loading profile...'}
+      <main className="profile-page">
+        <div className="profile-loading">
+          {message || 'Loading profile...'}
+        </div>
       </main>
     );
   }
 
   return (
-    <main>
-      <h1>My Profile</h1>
+    <main className="profile-page">
+      <h1 className="profile-page-title">My Profile</h1>
 
-      {message && <p>{message}</p>}
-
-      {user.profileImage && (
-        <img
-          src={user.profileImage}
-          alt={`${user.name}'s profile`}
-          width="150"
-        />
+      {message && (
+        <p className="profile-message">
+          {message}
+        </p>
       )}
 
-      <h2>{user.name}</h2>
+      <section className="profile-header">
+        <div className="profile-image-wrapper">
+          {user.profileImage ? (
+            <img
+              src={user.profileImage}
+              alt={`${user.name}'s profile`}
+            />
+          ) : (
+            <div className="profile-image-placeholder">
+              {user.name?.charAt(0).toUpperCase()}
+            </div>
+          )}
+        </div>
 
-      <p>Email: {user.email}</p>
+        <div className="profile-info">
+          <h2>{user.name}</h2>
 
-      <p>
-        Bio: {user.bio || 'No bio yet.'}
-      </p>
+          <p className="profile-email">
+            {user.email}
+          </p>
 
-      <Link to="/profile/edit">
-        Edit Profile
-      </Link>
+          <p className="profile-bio">
+            {user.bio || 'No bio yet.'}
+          </p>
 
-      <hr />
+          <div className="profile-actions">
+            <Link
+              to="/profile/edit"
+              className="profile-edit-button"
+            >
+              Edit Profile
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <section>
+      <section className="profile-content">
+        <div className="profile-card">
+          <h2>About</h2>
+
+          <p>
+            {user.bio || 'No bio yet.'}
+          </p>
+        </div>
+      </section>
+
+      <section className="profile-danger-zone">
         <h2>Danger Zone</h2>
 
         <p>
@@ -92,35 +134,44 @@ const Profile = () => {
         {!showDeleteConfirmation ? (
           <button
             type="button"
+            className="delete-account-button"
             onClick={() => setShowDeleteConfirmation(true)}
           >
             Delete Account
           </button>
         ) : (
-          <div>
-            <h3>Are you sure you want to delete your account?</h3>
+          <div className="delete-confirmation">
+            <h3>
+              Are you sure you want to delete your account?
+            </h3>
 
             <p>
               This action cannot be undone.
             </p>
 
-            <button
-              type="button"
-              onClick={handleDeleteAccount}
-              disabled={isDeleting}
-            >
-              {isDeleting
-                ? 'Deleting...'
-                : 'Delete My Account'}
-            </button>
+            <div className="delete-confirmation-actions">
+              <button
+                type="button"
+                className="confirm-delete-button"
+                onClick={handleDeleteAccount}
+                disabled={isDeleting}
+              >
+                {isDeleting
+                  ? 'Deleting...'
+                  : 'Delete My Account'}
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setShowDeleteConfirmation(false)}
-              disabled={isDeleting}
-            >
-              Cancel
-            </button>
+              <button
+                type="button"
+                className="cancel-delete-button"
+                onClick={() =>
+                  setShowDeleteConfirmation(false)
+                }
+                disabled={isDeleting}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         )}
       </section>

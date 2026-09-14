@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import { useNavigate } from 'react-router';
+
 import {
   getProfile,
   updateProfile,
@@ -14,7 +16,9 @@ const ProfileForm = () => {
   });
 
   const [profileImage, setProfileImage] = useState(null);
+
   const [message, setMessage] = useState('');
+
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -52,11 +56,13 @@ const ProfileForm = () => {
 
     try {
       setIsSaving(true);
+
       setMessage('');
 
       const data = new FormData();
 
       data.append('name', formData.name);
+
       data.append('bio', formData.bio);
 
       if (profileImage) {
@@ -68,72 +74,96 @@ const ProfileForm = () => {
       navigate('/profile');
     } catch (err) {
       setMessage(err.message);
+
       setIsSaving(false);
     }
   };
 
   return (
-    <main>
-      <h1>Edit Profile</h1>
+    <main className="profile-form-page">
+      <section className="profile-form-card">
+        <h1>Edit Profile</h1>
 
-      {message && <p>{message}</p>}
+        <p className="profile-form-subtitle">
+          Update your profile information.
+        </p>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
+        {message && (
+          <p className="profile-form-error">
+            {message}
+          </p>
+        )}
 
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="profile-form-group">
+            <label htmlFor="name">
+              Name
+            </label>
 
-        <div>
-          <label htmlFor="bio">Bio:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your name"
+              required
+            />
+          </div>
 
-          <textarea
-            id="bio"
-            name="bio"
-            value={formData.bio}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="profile-form-group">
+            <label htmlFor="bio">
+              Bio
+            </label>
 
-        <div>
-          <label htmlFor="profileImage">
-            Profile Image:
-          </label>
+            <textarea
+              id="bio"
+              name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              placeholder="Tell the Swaply community about yourself..."
+            />
+          </div>
 
-          <input
-            type="file"
-            id="profileImage"
-            name="profileImage"
-            accept="image/png, image/jpeg"
-            onChange={handleImageChange}
-          />
-        </div>
+          <div className="profile-form-group">
+            <label htmlFor="profileImage">
+              Profile Image
+            </label>
 
-        <button
-          type="submit"
-          disabled={isSaving}
-        >
-          {isSaving ? 'Saving...' : 'Save Changes'}
-        </button>
+            <input
+              type="file"
+              id="profileImage"
+              name="profileImage"
+              accept="image/png, image/jpeg"
+              onChange={handleImageChange}
+            />
+          </div>
 
-        <button
-          type="button"
-          onClick={() => navigate('/profile')}
-          disabled={isSaving}
-        >
-          Cancel
-        </button>
-      </form>
+          <div className="profile-form-actions">
+            <button
+              type="submit"
+              className="profile-save-button"
+              disabled={isSaving}
+            >
+              {isSaving
+                ? 'Saving...'
+                : 'Save Changes'}
+            </button>
+
+            <button
+              type="button"
+              className="profile-cancel-button"
+              onClick={() => navigate('/profile')}
+              disabled={isSaving}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </section>
     </main>
   );
 };
 
 export default ProfileForm;
+
