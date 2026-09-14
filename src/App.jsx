@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
-
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 
@@ -21,6 +20,10 @@ import SwapList from './components/Swaps/SwapList';
 import SwapDetails from './components/Swaps/SwapDetails';
 import SwapForm from './components/Swaps/SwapForm';
 import SwapEdit from './components/Swaps/SwapEdit';
+
+import ReviewList from './components/Reviews/ReviewList';
+import ReviewDetails from './components/Reviews/ReviewDetails';
+import ReviewForm from './components/Reviews/ReviewForm';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -110,6 +113,22 @@ const App = () => {
         <Route
           path="/swaps/:swapId/edit"
           element={user ? <SwapEdit /> : <SignInForm />}
+        />
+
+        {/* Reviews */}
+        <Route
+          path="/reviews"
+          element={user ? <ReviewList /> : <SignInForm />}
+        />
+
+        <Route
+          path="/reviews/:reviewId"
+          element={user ? <ReviewDetails /> : <SignInForm />}
+        />
+
+        <Route
+          path="/reviews/new"
+          element={user ? <ReviewForm /> : <SignInForm />}
         />
       </Routes>
     </>
