@@ -31,7 +31,7 @@ const SignInForm = () => {
 
       setUser(signedInUser);
 
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       setMessage(err.message);
     }
