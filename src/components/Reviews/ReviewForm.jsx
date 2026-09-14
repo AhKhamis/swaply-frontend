@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { createReview } from '../../services/reviewService';
 
-const ReviewForm = ({ reviewedUser, swap }) => {
+const ReviewForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    reviewedUser: reviewedUser || '',
-    swap: swap || '',
+    reviewedUser: '',
+    swap: '',
     rating: '',
     comment: '',
   });
@@ -36,29 +36,55 @@ const ReviewForm = ({ reviewedUser, swap }) => {
 
   return (
     <main>
-      <h1>Leave a Review</h1>
+      <h1>Create Review</h1>
 
       {message && <p>{message}</p>}
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="rating">Rating:</label>
-
+          <label htmlFor="reviewedUser">Reviewed User:</label>
           <input
-            type="number"
-            id="rating"
-            name="rating"
-            min="1"
-            max="5"
-            value={formData.rating}
+            type="text"
+            id="reviewedUser"
+            name="reviewedUser"
+            value={formData.reviewedUser}
             onChange={handleChange}
             required
           />
         </div>
 
         <div>
-          <label htmlFor="comment">Comment:</label>
+          <label htmlFor="swap">Swap:</label>
+          <input
+            type="text"
+            id="swap"
+            name="swap"
+            value={formData.swap}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
+        <div>
+          <label htmlFor="rating">Rating:</label>
+          <select
+            id="rating"
+            name="rating"
+            value={formData.rating}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="comment">Comment:</label>
           <textarea
             id="comment"
             name="comment"
@@ -69,9 +95,7 @@ const ReviewForm = ({ reviewedUser, swap }) => {
         </div>
 
         <div>
-          <button type="submit">
-            Submit Review
-          </button>
+          <button type="submit">Create Review</button>
 
           <button
             type="button"
