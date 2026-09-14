@@ -22,20 +22,12 @@
   justify-content: space-between;
 }
 
-/* =========================
-   LEFT SIDE
-========================= */
-
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 28px;
   min-width: 0;
 }
-
-/* =========================
-   LOGO
-========================= */
 
 .navbar-logo {
   display: flex;
@@ -49,10 +41,6 @@
   height: auto;
   display: block;
 }
-
-/* =========================
-   NAVIGATION
-========================= */
 
 .navbar-center {
   position: absolute;
@@ -77,20 +65,12 @@
   color: var(--purple);
 }
 
-/* =========================
-   RIGHT SIDE
-========================= */
-
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
 }
-
-/* =========================
-   SIGN IN
-========================= */
 
 .navbar-signin {
   min-height: 44px;
@@ -115,10 +95,6 @@
   border-color: var(--purple);
 }
 
-/* =========================
-   SIGN UP
-========================= */
-
 .navbar-signup {
   min-height: 44px;
   padding: 0 24px;
@@ -142,10 +118,6 @@
   box-shadow: 0 5px 12px rgba(248, 54, 198, 0.18);
 }
 
-/* =========================
-   SIGN OUT
-========================= */
-
 .navbar-signout {
   min-height: 44px;
   padding: 0 20px;
@@ -167,6 +139,159 @@
 .navbar-signout:hover {
   color: var(--purple);
   border-color: var(--purple);
+}
+
+
+/* =========================
+   NAVBAR RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .navbar {
+    width: 94%;
+    height: 66px;
+    margin-top: 18px;
+  }
+
+  .navbar-container {
+    padding: 0 14px 0 20px;
+  }
+
+  .navbar-left {
+    gap: 22px;
+  }
+
+  .navbar-logo img {
+    width: 135px;
+  }
+
+  .navbar-center {
+    gap: 20px;
+  }
+
+  .navbar-center a {
+    font-size: 12px;
+  }
+
+  .navbar-signin,
+  .navbar-signup,
+  .navbar-signout {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    height: auto;
+    min-height: 62px;
+  }
+
+  .navbar-container {
+    min-height: 62px;
+    padding: 8px 12px 8px 16px;
+  }
+
+  .navbar-left {
+    gap: 16px;
+  }
+
+  .navbar-logo img {
+    width: 120px;
+  }
+
+  .navbar-center {
+    gap: 14px;
+  }
+
+  .navbar-center a {
+    font-size: 11px;
+  }
+
+  .navbar-signin,
+  .navbar-signup,
+  .navbar-signout {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    width: 94%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 14px;
+  }
+
+  .navbar-container {
+    min-height: auto;
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .navbar-logo img {
+    width: 115px;
+  }
+
+  .navbar-center {
+    gap: 10px 16px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-center a {
+    font-size: 10px;
+  }
+
+  .navbar-right {
+    gap: 8px;
+  }
+
+  .navbar-signin,
+  .navbar-signup,
+  .navbar-signout {
+    min-height: 34px;
+    padding: 0 13px;
+    border-radius: 9px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    width: 95%;
+  }
+
+  .navbar-container {
+    padding: 10px 12px;
+  }
+
+  .navbar-logo img {
+    width: 105px;
+  }
+
+  .navbar-center {
+    gap: 8px 11px;
+  }
+
+  .navbar-center a {
+    font-size: 9px;
+  }
+
+  .navbar-signin,
+  .navbar-signup,
+  .navbar-signout {
+    min-height: 32px;
+    padding: 0 11px;
+  }
 }
 
 
@@ -303,6 +428,67 @@
 
 
 /* =========================
+   SKILLS RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .skills-page,
+  .skill-details-page,
+  .skill-form-page {
+    width: 92%;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-page,
+  .skill-details-page,
+  .skill-form-page {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .skills-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skill-card-image {
+    height: 220px;
+  }
+}
+
+@media (max-width: 400px) {
+  .skills-page,
+  .skill-details-page,
+  .skill-form-page {
+    width: 92%;
+    margin: 25px auto;
+  }
+
+  .skill-card-image {
+    height: 200px;
+  }
+}
+
+
+/* =========================
    SKILL DETAILS
 ========================= */
 
@@ -415,6 +601,61 @@
 
 
 /* =========================
+   SKILL DETAILS RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .skill-details-hero {
+    gap: 30px;
+  }
+
+  .skill-details-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 800px) {
+  .skill-details-hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .skill-details-image {
+    height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skill-details-image {
+    height: 300px;
+  }
+
+  .skill-details-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .skill-actions,
+  .skill-owner-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .skill-actions button,
+  .skill-owner-actions a,
+  .skill-owner-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .skill-details-image {
+    height: 250px;
+  }
+}
+
+
+/* =========================
    SKILL FORM
 ========================= */
 
@@ -490,210 +731,15 @@
 
 
 /* =========================
-   LAPTOP
-========================= */
-
-@media (max-width: 1000px) {
-  .navbar {
-    width: 94%;
-    height: 66px;
-    margin-top: 18px;
-  }
-
-  .navbar-container {
-    padding: 0 14px 0 20px;
-  }
-
-  .navbar-left {
-    gap: 22px;
-  }
-
-  .navbar-logo img {
-    width: 135px;
-  }
-
-  .navbar-center {
-    gap: 20px;
-  }
-
-  .navbar-center a {
-    font-size: 12px;
-  }
-
-  .navbar-signin,
-  .navbar-signup,
-  .navbar-signout {
-    min-height: 40px;
-  }
-
-  .skills-page,
-  .skill-details-page,
-  .skill-form-page {
-    width: 92%;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .skill-details-hero {
-    gap: 30px;
-  }
-
-  .skill-details-image {
-    height: 400px;
-  }
-}
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 800px) {
-  .navbar {
-    height: auto;
-    min-height: 62px;
-  }
-
-  .navbar-container {
-    min-height: 62px;
-    padding: 8px 12px 8px 16px;
-  }
-
-  .navbar-left {
-    gap: 16px;
-  }
-
-  .navbar-logo img {
-    width: 120px;
-  }
-
-  .navbar-center {
-    gap: 14px;
-  }
-
-  .navbar-center a {
-    font-size: 11px;
-  }
-
-  .navbar-signin,
-  .navbar-signup,
-  .navbar-signout {
-    min-height: 36px;
-    padding: 0 14px;
-    border-radius: 10px;
-    font-size: 11px;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .skill-details-hero {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .skill-details-image {
-    height: 420px;
-  }
-}
-
-
-/* =========================
-   MOBILE
+   SKILL FORM RESPONSIVE
 ========================= */
 
 @media (max-width: 600px) {
-  .navbar {
-    width: 94%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 14px;
-  }
-
-  .navbar-container {
-    min-height: auto;
-    padding: 12px 14px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .navbar-left {
-    width: 100%;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .navbar-logo img {
-    width: 115px;
-  }
-
-  .navbar-center {
-    gap: 10px 16px;
-    flex-wrap: wrap;
-  }
-
-  .navbar-center a {
-    font-size: 10px;
-  }
-
-  .navbar-right {
-    gap: 8px;
-  }
-
-  .navbar-signin,
-  .navbar-signup,
-  .navbar-signout {
-    min-height: 34px;
-    padding: 0 13px;
-    border-radius: 9px;
-    font-size: 10px;
-  }
-
-  .skills-page,
-  .skill-details-page,
-  .skill-form-page {
-    width: 90%;
-    margin: 30px auto;
-  }
-
-  .skills-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .skill-card-image {
-    height: 220px;
-  }
-
-  .skill-details-image {
-    height: 300px;
-  }
-
-  .skill-details-title {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .skill-actions,
-  .skill-owner-actions,
   .skill-form-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .skill-actions button,
-  .skill-owner-actions a,
-  .skill-owner-actions button,
   .skill-form-actions button {
     width: 100%;
   }
@@ -703,55 +749,842 @@
   }
 }
 
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
 @media (max-width: 400px) {
-  .navbar {
-    width: 95%;
-  }
-
-  .navbar-container {
-    padding: 10px 12px;
-  }
-
-  .navbar-logo img {
-    width: 105px;
-  }
-
-  .navbar-center {
-    gap: 8px 11px;
-  }
-
-  .navbar-center a {
-    font-size: 9px;
-  }
-
-  .navbar-signin,
-  .navbar-signup,
-  .navbar-signout {
-    min-height: 32px;
-    padding: 0 11px;
-  }
-
-  .skills-page,
-  .skill-details-page,
-  .skill-form-page {
-    width: 92%;
-    margin: 25px auto;
-  }
-
-  .skill-card-image {
-    height: 200px;
-  }
-
-  .skill-details-image {
-    height: 250px;
-  }
-
   .image-preview-large {
     height: 220px;
+  }
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* =========================
+   HOME - HERO
+========================= */
+
+.home-hero {
+  width: 94%;
+  max-width: 1450px;
+  min-height: 620px;
+  margin: 14px auto 0;
+  padding: 70px 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 50px;
+  background: var(--navy);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.home-eyebrow {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.home-hero h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(52px, 5vw, 76px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -2.5px;
+}
+
+.home-hero h1 span {
+  color: var(--green);
+}
+
+.home-hero-description {
+  max-width: 510px;
+  margin: 28px 0 0;
+  color: #c8c9df;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.home-primary-button,
+.home-secondary-button {
+  min-height: 48px;
+  padding: 0 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.home-primary-button {
+  color: var(--navy);
+  background: var(--green);
+}
+
+.home-primary-button:hover {
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 230, 118, 0.18);
+}
+
+.home-secondary-button {
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.home-secondary-button:hover {
+  color: var(--white);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.home-hero-visual {
+  position: relative;
+  min-height: 470px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-area {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-area img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================
+   HOME - HERO RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .home-hero {
+    min-height: 560px;
+    padding: 60px 55px;
+    gap: 35px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(44px, 5.5vw, 62px);
+  }
+
+  .home-hero-description {
+    font-size: 13px;
+  }
+
+  .home-hero-visual {
+    min-height: 420px;
+  }
+
+  .hero-image-area {
+    width: 320px;
+    height: 320px;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-hero {
+    min-height: auto;
+    padding: 65px 45px;
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .home-hero-content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .home-hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-hero-actions {
+    justify-content: center;
+  }
+
+  .home-hero-visual {
+    min-height: 400px;
+    width: 100%;
+  }
+
+  .hero-image-area {
+    width: 330px;
+    height: 330px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    width: 94%;
+    margin-top: 10px;
+    padding: 50px 25px;
+    gap: 45px;
+    border-radius: 22px;
+  }
+
+  .home-eyebrow {
+    margin-bottom: 14px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(38px, 10vw, 50px);
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+
+  .home-hero-description {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .home-hero-actions {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 26px;
+  }
+
+  .home-primary-button,
+  .home-secondary-button {
+    width: 100%;
+  }
+
+  .home-hero-visual {
+    min-height: 320px;
+  }
+
+  .hero-image-area {
+    width: 270px;
+    height: 270px;
+    border-radius: 21px;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-hero {
+    width: 95%;
+    padding: 42px 20px;
+  }
+
+  .home-hero h1 {
+    font-size: 34px;
+  }
+
+  .home-hero-description {
+    font-size: 11px;
+  }
+
+  .home-hero-visual {
+    min-height: 285px;
+  }
+
+  .hero-image-area {
+    width: 240px;
+    height: 240px;
+    border-radius: 19px;
+  }
+}
+
+
+/* =========================
+   HOME - HOW IT WORKS
+========================= */
+
+.home-how-it-works {
+  width: 90%;
+  max-width: 1200px;
+  margin: 90px auto 0;
+}
+
+.home-section-heading {
+  max-width: 760px;
+  margin-bottom: 55px;
+}
+
+.home-section-heading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.home-section-heading > p:last-child {
+  max-width: 700px;
+  margin: 16px 0 0;
+  color: #717382;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   HOME - STEPS
+========================= */
+
+.home-steps {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.home-step {
+  min-width: 0;
+}
+
+.home-step-top {
+  width: 100%;
+  height: 58px;
+  display: flex;
+  align-items: center;
+}
+
+.home-step-number {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.home-step-line {
+  width: 100%;
+  height: 2px;
+  margin-left: 0;
+  background: var(--navy);
+}
+
+.home-step-content {
+  padding-top: 22px;
+  padding-right: 35px;
+}
+
+.home-step:last-child .home-step-content {
+  padding-right: 0;
+}
+
+.home-step h3 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.home-step p {
+  max-width: 330px;
+  margin: 0;
+  color: #717382;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   HOME - HOW IT WORKS STEPS
+========================= */
+
+.home-steps {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  margin: 0 auto;
+}
+
+.home-step {
+  min-width: 0;
+  text-align: center;
+}
+
+.home-step-top {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-step-line {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background: #1a1754;
+  transform: translateY(-50%);
+}
+
+.home-step:last-child .home-step-line {
+  display: none;
+}
+
+.home-step-number {
+  position: relative;
+  z-index: 2;
+
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #00e676 !important;
+  background: #1a1754 !important;
+
+  border: none;
+  border-radius: 50%;
+
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.home-step-content {
+  padding-top: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.home-step-content h3,
+.home-step h3 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.home-step-content p,
+.home-step p {
+  max-width: 330px;
+  margin: 0 auto;
+  color: #717382;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+
+/* =========================
+   HOME - HOW IT WORKS RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+  .home-how-it-works {
+    width: 92%;
+  }
+
+  .home-steps {
+    width: 100%;
+  }
+
+  .home-step-number {
+    width: 64px;
+    height: 64px;
+    font-size: 15px;
+  }
+
+  .home-step-top {
+    height: 64px;
+  }
+
+  .home-step-line {
+    height: 2px;
+  }
+
+  .home-step-content {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .home-step h3 {
+    font-size: 18px;
+  }
+
+  .home-step p {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 800px) {
+
+  .home-how-it-works {
+    margin-top: 80px;
+  }
+
+  .home-steps {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .home-step {
+    position: relative;
+  }
+
+  .home-step-top {
+    width: 100%;
+    height: 64px;
+  }
+
+  .home-step-line {
+    display: none;
+  }
+
+  .home-step-content {
+    padding-top: 18px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-step h3 {
+    text-align: center;
+  }
+
+  .home-step p {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .home-how-it-works {
+    width: 90%;
+    margin-top: 70px;
+  }
+
+  .home-steps {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .home-step-number {
+    width: 58px;
+    height: 58px;
+    font-size: 14px;
+  }
+
+  .home-step-top {
+    height: 58px;
+  }
+
+  .home-step-content {
+    padding-top: 15px;
+  }
+
+  .home-step h3 {
+    font-size: 18px;
+  }
+
+  .home-step p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .home-how-it-works {
+    width: 92%;
+  }
+
+  .home-steps {
+    gap: 30px;
+  }
+
+  .home-step-number {
+    width: 52px;
+    height: 52px;
+    font-size: 13px;
+  }
+
+  .home-step-top {
+    height: 52px;
+  }
+
+  .home-step-content {
+    padding-top: 13px;
+  }
+
+  .home-step h3 {
+    font-size: 17px;
+  }
+
+  .home-step p {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================
+   HOME - POPULAR SKILLS
+========================= */
+
+.home-popular-skills {
+  width: 90%;
+  max-width: 1200px;
+  margin: 110px auto 0;
+}
+
+.home-popular-heading {
+  max-width: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.home-view-all {
+  color: var(--purple);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.home-view-all:hover {
+  color: var(--pink);
+}
+
+.home-skill-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.home-skill-preview {
+  min-height: 220px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 22px;
+  background: var(--light-gray);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.home-skill-preview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(26, 23, 84, 0.07);
+}
+
+.home-skill-category {
+  margin-bottom: auto;
+  color: var(--purple);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.home-skill-preview h3 {
+  margin: 0 0 9px;
+  color: var(--navy);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.home-skill-preview p {
+  margin: 0;
+  color: #717382;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   HOME - POPULAR SKILLS RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .home-skill-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-popular-skills {
+    width: 90%;
+    margin-top: 85px;
+  }
+
+  .home-popular-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-skill-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .home-skill-preview {
+    min-height: 190px;
+    padding: 24px;
+    border-radius: 18px;
+  }
+}
+
+
+/* =========================
+   HOME - COMMUNITY CTA
+========================= */
+
+.home-community {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 360px;
+  margin: 110px auto 80px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 30px;
+  background: var(--navy);
+}
+
+.home-community-content {
+  max-width: 700px;
+}
+
+.home-community .home-eyebrow {
+  color: var(--green);
+}
+
+.home-community h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.home-community h2 span {
+  color: var(--green);
+}
+
+.home-community p:not(.home-eyebrow) {
+  max-width: 580px;
+  margin: 20px auto 30px;
+  color: #d7d6e8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.home-community .home-primary-button {
+  background: var(--pink);
+}
+
+
+/* =========================
+   HOME - COMMUNITY CTA RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+  .home-community {
+    margin-top: 85px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-community {
+    width: 90%;
+    min-height: 330px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    padding: 40px 25px;
+    border-radius: 24px;
+  }
+
+  .home-community h2 {
+    font-size: 34px;
+  }
+
+  .home-community p:not(.home-eyebrow) {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-community {
+    padding: 35px 20px;
+  }
+
+  .home-community h2 {
+    font-size: 30px;
   }
 }
