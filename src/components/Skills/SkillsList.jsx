@@ -14,12 +14,18 @@ const SkillsList = () => {
 
   const categories = [
     'All',
-    'Programming',
-    'Design',
-    'Language',
-    'Outdoor',
-    'Business',
+    'Programming & Technology',
+    'Design & Creative',
+    'Languages',
+    'Business & Career',
+    'Education & Tutoring',
+    'Music',
+    'Cooking & Food',
+    'Sports & Fitness',
+    'Arts & Crafts',
     'Lifestyle',
+    'Outdoor & Adventure',
+    'Other',
   ];
 
   useEffect(() => {

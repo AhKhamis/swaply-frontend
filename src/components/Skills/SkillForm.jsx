@@ -147,15 +147,43 @@ const SkillForm = () => {
               Category:
             </label>
 
-            <input
-              type="text"
+            <select
               id="category"
               name="category"
               value={formData.category}
               onChange={handleChange}
-              placeholder="Programming, Design, Language..."
               required
-            />
+            >
+              <option value="">Select a category</option>
+              <option value="Programming & Technology">
+                Programming & Technology
+              </option>
+              <option value="Design & Creative">
+                Design & Creative
+              </option>
+              <option value="Languages">Languages</option>
+              <option value="Business & Career">
+                Business & Career
+              </option>
+              <option value="Education & Tutoring">
+                Education & Tutoring
+              </option>
+              <option value="Music">Music</option>
+              <option value="Cooking & Food">
+                Cooking & Food
+              </option>
+              <option value="Sports & Fitness">
+                Sports & Fitness
+              </option>
+              <option value="Arts & Crafts">
+                Arts & Crafts
+              </option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Outdoor & Adventure">
+                Outdoor & Adventure
+              </option>
+              <option value="Other">Other</option>
+            </select>
 
           </div>
 
