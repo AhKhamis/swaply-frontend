@@ -213,25 +213,21 @@ const SkillForm = () => {
             Skill Image
           </label>
 
-          <div className="image-preview-large">
-
-            {image ? (
+          {image ? (
+            <div className="image-preview-large">
               <img
                 src={URL.createObjectURL(image)}
                 alt="Skill preview"
               />
-            ) : currentImage ? (
+            </div>
+          ) : currentImage ? (
+            <div className="image-preview-large">
               <img
                 src={currentImage}
                 alt="Current skill"
               />
-            ) : (
-              <span>
-                IMAGE
-              </span>
-            )}
-
-          </div>
+            </div>
+          ) : null}
 
           <input
             type="file"
