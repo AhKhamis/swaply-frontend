@@ -5018,6 +5018,7 @@ body {
   line-height: 1.6;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .profile-view-skill-button {
