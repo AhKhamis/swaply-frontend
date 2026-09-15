@@ -10,7 +10,7 @@ const SkillsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
 
-  const skillsPerPage = 10;
+  const skillsPerPage = 12;
 
   const categories = [
     'All',
