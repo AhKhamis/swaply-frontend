@@ -162,6 +162,11 @@ const App = () => {
         />
 
         <Route
+          path="/dashboard"
+          element={user ? <Dashboard /> : <SignInForm />}
+        />
+
+        <Route
           path="/admin"
           element={
             isAdmin ? (
